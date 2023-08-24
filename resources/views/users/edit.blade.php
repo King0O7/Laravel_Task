@@ -67,7 +67,7 @@
                     <label for="last_name">Last Name :</label>
                     <input type="text" name="last_name" id="last_name" value="{{ $data->last_name }}"><br><br>
                     <label for="email">Email :</label>
-                    <input type="email" name="email" id="email" value="{{ $data->email }}"><br><br>
+                    <input type="email" name="email" id="email" value="{{ $data->email }}" Readonly><br><br>
                     <label for="state">State :</label>
                     <input type="text" name="state" id="state" value="{{ $data->state }}"><br><br>
                     <label for="user_name">User Name :</label>

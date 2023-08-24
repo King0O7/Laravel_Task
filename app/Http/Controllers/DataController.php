@@ -108,14 +108,13 @@ class DataController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'first_name' => 'required|string',
-        //     'last_name' => 'required|string',
-        //     'email' => 'required|email|unique:userdatas',$id,
-        //     'state' => 'required|string',
-        //     'user_name' => 'required|string',
-        //     'profileimage' => 'image|mimes:jpg,jpeg,png|max:1024'
-        // ]);
+        $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'state' => 'required|string',
+            'user_name' => 'required|string',
+            'profileimage' => 'image|mimes:jpg,jpeg,png|max:1024'
+        ]);
 
         $userdatas = Userdata::findOrFail($id);
         if ($request->hasFile('profileimage')){
@@ -131,11 +130,11 @@ class DataController extends Controller
                 $userdatas->image()->save(
                     Image::create([
                         'file_path' => $path,
-                        'userdata_id' => $request->id
+                        'userdata_id' => $id
                         ])
                 );
             }
-            $img = Image::where('userdata_id',$request->id)->first();
+            $img = Image::where('userdata_id',$id)->first();
             session(['file_path' => $img->file_path]);
         }
 
