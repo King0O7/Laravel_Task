@@ -111,6 +111,7 @@ class DataController extends Controller
         $request->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
+            'email' => 'sometimes|required|email',
             'state' => 'required|string',
             'user_name' => 'required|string',
             'profileimage' => 'image|mimes:jpg,jpeg,png|max:1024'
